@@ -4,7 +4,7 @@
     <AssemblyTitle>Hangfire.Console</AssemblyTitle>
     <VersionPrefix>1.4.3</VersionPrefix>
     <Authors>Alexey Skalozub</Authors>
-    <TargetFrameworks>netstandard1.3;net45</TargetFrameworks>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <AssemblyName>Hangfire.Console</AssemblyName>
@@ -107,24 +107,26 @@
       v1.0.0:
       • Initial release
     </PackageReleaseNotes>
-    <PackageIconUrl>https://raw.githubusercontent.com/pieceofsummer/Hangfire.Console/master/hangfire.console.png</PackageIconUrl>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/pieceofsummer/Hangfire.Console/master/LICENSE.md</PackageLicenseUrl>
+    <PackageIcon>hangfire.console.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/pieceofsummer/Hangfire.Console</RepositoryUrl>
-    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
-    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
-    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
   </PropertyGroup>
+  <ItemGroup>
+    <None Include="../../hangfire.console.png" Pack="true" PackagePath="" Visible="false" />
+    <None Include="../../README.md" Pack="true" PackagePath="" />
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\*" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Hangfire.Core" Version="1.6.0" />
-    <PackageReference Include="JetBrains.Annotations" Version="11.0.0" PrivateAssets="All" />
+    <InternalsVisibleTo Include="Hangfire.Console.Tests" />
+    <InternalsVisibleTo Include="DynamicProxyGenAssembly2" />
   </ItemGroup>
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
-    <Reference Include="System" />
-    <Reference Include="Microsoft.CSharp" />
-    <PackageReference Include="Newtonsoft.Json" Version="5.0.1" />
+  <ItemGroup>
+    <PackageReference Include="Hangfire.Core" Version="1.7.0" />
+    <PackageReference Include="JetBrains.Annotations" Version="2024.3.0" PrivateAssets="All" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 </Project>

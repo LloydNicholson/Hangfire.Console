@@ -152,7 +152,9 @@ namespace Hangfire.Console.Tests.States
             return new StateChangeContext(_storage.Object, _connection.Object, "1", state);
         }
 
+#pragma warning disable xUnit1013
         public static void JobMethod()
+#pragma warning restore xUnit1013
         {
         }
         

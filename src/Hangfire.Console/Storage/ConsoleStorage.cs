@@ -72,7 +72,7 @@ namespace Hangfire.Console.Storage
                 else
                 {
                     // try to encode and see if it fits
-                    value = JobHelper.ToJson(line);
+                    value = SerializationHelper.Serialize(line, SerializationOption.User);
 
                     if (value.Length > ValueFieldLimit)
                     {
@@ -89,7 +89,7 @@ namespace Hangfire.Console.Storage
                     line.Message = referenceKey;
                     line.IsReference = true;
 
-                    value = JobHelper.ToJson(line);
+                    value = SerializationHelper.Serialize(line, SerializationOption.User);
                 }
 
                 tran.AddToSet(consoleId.GetSetKey(), value, line.TimeOffset);
@@ -162,7 +162,7 @@ namespace Hangfire.Console.Storage
 
             foreach (var item in items)
             {
-                var line = JobHelper.FromJson<ConsoleLine>(item);
+                var line = SerializationHelper.Deserialize<ConsoleLine>(item, SerializationOption.User);
 
                 if (line.IsReference)
                 {
